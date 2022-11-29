@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~bootstrap/dist/css/bootstrap.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+html {
+  height: 100%;
+}
+body {
+  //to remove horizontal scrollbar overflow-x
+  max-width: 100%;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// html {
+//   width: 100vw;
+//   overflow-x: hidden;
+// }

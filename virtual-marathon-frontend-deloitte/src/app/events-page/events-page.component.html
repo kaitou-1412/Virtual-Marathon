@@ -1,0 +1,109 @@
+<div class="row all-challenges-heading">All Challenges</div>
+
+<div class="row event-type-status-container">
+  <div class="col event-type-event-page">
+    <p>Type</p>
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn" id="dropdownBasic1 " ngbDropdownToggle>
+          {{ displayEventType }}
+        </button>
+        <div
+          class="dropdown-events-page"
+          ngbDropdownMenu
+          aria-labelledby="dropdownBasic1"
+        >
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ type: 'none' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventType('Select')"
+          >
+            None
+          </button>
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ type: 'cycling' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventType('Cycling')"
+          >
+            Cycling
+          </button>
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ type: 'running' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventType('Running')"
+          >
+            Running
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col event-status-event-page">
+    <p class="event-type-text-events-page">Status</p>
+    <!-- <div class="row"> -->
+    <div class="col">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          class="btn event-type-button-custom-design"
+          id="dropdownBasic1"
+          ngbDropdownToggle
+        >
+          {{ displayEventStatus }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ status: 'none' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventStatus('Select')"
+          >
+            None
+          </button>
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ status: 'upcoming' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventStatus('Upcoming')"
+          >
+            Upcoming
+          </button>
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ status: 'open' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventStatus('Open')"
+          >
+            Open
+          </button>
+          <button
+            [routerLink]="['/events']"
+            [queryParams]="{ status: 'closed' }"
+            queryParamsHandling="merge"
+            ngbDropdownItem
+            on-click="changeEventStatus('Closed')"
+          >
+            Closed
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <nav
+    *ngFor="let event of allEvents"
+    class="events col-xl-4 col-lg-4 col-md-4 col-sm-12"
+  >
+    <app-card [event]="event"></app-card>
+  </nav>
+</div>

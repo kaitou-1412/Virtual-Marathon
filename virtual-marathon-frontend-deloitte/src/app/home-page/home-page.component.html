@@ -1,0 +1,68 @@
+<!-- <p>home page</p>
+<button class="btn btn-primarytempbutton">SIGN UP</button> -->
+<div id="page-container">
+  <div id="content-wrap">
+    <div class="row first-row-home-page">
+      <img
+        class="background-image-home-page"
+        src="assets/images/marathon-image-2-cropped.jpg"
+      />
+      <!-- <div class="text-over-image">
+        
+        A Virtual Race is a race you can run at any location, at your pace,
+        outside or on a treadmill, alone or with a group of friends
+      
+      </div> -->
+      <!-- <button class="btn btn-primary temp-button">SIGN UP</button> -->
+      <!-- <button class="btn btn-primary temp-button">{{ participant }}</button> -->
+    </div>
+
+    <!-- <div class="row second-row-home-page">
+      <h1 class="virtual-race-home-page">WHAT IS VIRTUAL RACE ?</h1>
+      <p class="virtual-race-text-home-page">
+        A virtual race is a race that can be run (or walked) from any location
+        you choose. You can run, jog, or walk on the road, on the trail, on the
+        treadmill at the gym or on the track (or even at another race). You get
+        to run your own race, at your own pace, and time it yourself. Running or
+        walking these virtual races on your own, or with friends! And your medal
+        will be shipped directly to you. Complete a virtual 5K or 10k, or
+        challenge yourself and complete our virtual half marathon! We have a
+        variety of virtual running events to choose from!
+      </p>
+    </div> -->
+
+    <!-- <div class="row third-row-home-page"> -->
+    <!-- <h1 class="how-it-works-home-page">HOW IT WORKS?</h1> -->
+    <div class="row third-row-home-page images-123-home-page">
+      <h1 class="how-it-works-home-page">HOW IT WORKS?</h1>
+      <div
+        [routerLink]="'/events'"
+        class="col-xl-3 col-lg-4 col-md-4 col-sm-12"
+      >
+        <img src="assets/images/1.png" />
+        <p class="image-text-1-home-page">SIGN UP FOR RACE</p>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+        <img src="assets/images/2.png" />
+        <p class="image-text-1-home-page">COMPLETE YOUR VIRTUAL RACE</p>
+      </div>
+      <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+        <img src="assets/images/3.png" />
+        <p class="image-text-1-home-page">CHECK YOUR RESULTS</p>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="row fourth-row-home-page"> -->
+
+    <div class="row fourth-row-home-page">
+      <h1 class="upcoming-challenges-text-home-page">UPCOMING CHALLENGES</h1>
+      <nav
+        *ngFor="let event of twoUpcomingEvents"
+        class="events col-xl-4 col-lg-4 col-md-4 col-sm-12"
+      >
+        <app-card [event]="event"></app-card>
+      </nav>
+    </div>
+  </div>
+</div>

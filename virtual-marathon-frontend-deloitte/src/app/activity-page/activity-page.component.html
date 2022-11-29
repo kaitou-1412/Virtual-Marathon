@@ -1,0 +1,410 @@
+<div *ngIf="state === '1'">
+  <div class="race position1">
+    <div>
+      <button (click)="timerStart()" class="RaceButton">Start</button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="typeOfEvent === 'running'"
+    [ngClass]="{
+      beforeEventCyclingAnimationContainer: typeOfEvent === 'running'
+    }"
+  >
+    <!-- ------------------------------------------------ -->
+    <div class="screen">
+      <div class="bike-screen">
+        <div class="bike">
+          <div class="left-handle"></div>
+          <div class="left-handle-brake"></div>
+          <div class="right-handle"></div>
+          <div class="right-handle-brake"></div>
+          <div class="headlight"></div>
+          <div class="left-pedal"></div>
+          <div class="left-pedal-rod"></div>
+          <div class="left-pedal-footer"></div>
+          <div class="left-suspension"></div>
+          <div class="right-pedal"></div>
+          <div class="right-pedal-rod"></div>
+          <div class="right-pedal-footer"></div>
+          <div class="right-suspension"></div>
+          <div class="body"></div>
+          <div class="body-rod"></div>
+          <div class="wheel"></div>
+          <div class="seat"></div>
+        </div>
+      </div>
+      <div class="road"></div>
+    </div>
+    <!-- -------------------------------------------------    -->
+  </div>
+
+  <div
+    *ngIf="typeOfEvent === 'cycling'"
+    [ngClass]="{
+      beforeEventCyclingAnimationContainer: typeOfEvent === 'cycling'
+    }"
+  >
+    <div class="screen">
+      <div class="bike-screen">
+        <div class="bike">
+          <div class="left-handle"></div>
+          <div class="left-handle-brake"></div>
+          <div class="right-handle"></div>
+          <div class="right-handle-brake"></div>
+          <div class="headlight"></div>
+          <div class="left-pedal"></div>
+          <div class="left-pedal-rod"></div>
+          <div class="left-pedal-footer"></div>
+          <div class="left-suspension"></div>
+          <div class="right-pedal"></div>
+          <div class="right-pedal-rod"></div>
+          <div class="right-pedal-footer"></div>
+          <div class="right-suspension"></div>
+          <div class="body"></div>
+          <div class="body-rod"></div>
+          <div class="wheel"></div>
+          <div class="seat"></div>
+        </div>
+      </div>
+      <div class="road"></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="state === '2'">
+  <div
+    *ngIf="typeOfEvent === 'running'"
+    [ngClass]="{
+      duringEventRunningAnimationContainer: typeOfEvent === 'running'
+    }"
+  >
+    <div class="container">
+      <div class="man">
+        <div class="body">
+          <div class="head">
+            <div class="hat"></div>
+            <div class="glasses"></div>
+            <div class="ear"></div>
+            <div class="mouth"></div>
+          </div>
+
+          <div class="arm left">
+            <div class="lower-arm"></div>
+          </div>
+          <div class="leg left">
+            <div class="lower-leg"></div>
+          </div>
+          <div class="leg right">
+            <div class="lower-leg"></div>
+          </div>
+          <div class="arm right">
+            <div class="lower-arm"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
+
+      <div class="ground">
+        <div class="rock rk1"></div>
+        <div class="rock rk2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="typeOfEvent === 'cycling'"
+    [ngClass]="{
+      duringEventCyclingAnimationContainer: typeOfEvent === 'cycling'
+    }"
+  >
+    <div class="box">
+      <!-- The Whole Bike -->
+      <div class="bike">
+        <!-- Components of the bike -->
+        <!-- Back wheel -->
+        <div class="back-wheel">
+          <!-- Inside the wheel -->
+          <div class="cassette">
+            <!-- Spokes ~ the numbers are clock number orientation-->
+            <div class="_12-6"></div>
+            <div class="_1-7"></div>
+            <div class="_2-8"></div>
+            <div class="_3-9"></div>
+            <div class="_4-10"></div>
+            <div class="_5-11"></div>
+          </div>
+        </div>
+        <div class="hub"></div>
+
+        <!-- Front wheel -->
+        <div class="front-wheel">
+          <!-- Inside the wheel -->
+          <div class="cassette">
+            <!-- Spokes -->
+            <div class="_12-6"></div>
+            <div class="_1-7"></div>
+            <div class="_2-8"></div>
+            <div class="_3-9"></div>
+            <div class="_4-10"></div>
+            <div class="_5-11"></div>
+            <div class="_6-12"></div>
+          </div>
+        </div>
+
+        <!-- Handlebar -->
+        <div class="handlebar">
+          <div class="bar headset"></div>
+          <div class="bar stem"></div>
+          <div class="bar hb1"></div>
+          <div class="bar hb2"></div>
+        </div>
+
+        <!-- Seat -->
+        <div class="seat"></div>
+
+        <!-- Bike frame -->
+        <div class="body-frame">
+          <div class="bk-upper"></div>
+          <div class="bk-lower"></div>
+          <div class="fr-upper"></div>
+          <div class="fr-lower"></div>
+          <div class="seat-frame">
+            <div class="seatpost"></div>
+          </div>
+          <div class="handlebar-frame"></div>
+        </div>
+
+        <!-- Crankset -->
+        <div class="crank"></div>
+
+        <div class="crankset"></div>
+
+        <!-- Chain -->
+        <div class="chain-upp"></div>
+        <div class="chain-lo"></div>
+
+        <!-- Bike Shadow -->
+        <div class="bike-shadow"></div>
+
+        <!-- Streaks of ground-light -->
+        <div class="streak1"></div>
+        <div class="streak2"></div>
+        <div class="streak3"></div>
+        <div class="streak4"></div>
+
+        <!--Girl-->
+        <div class="girl">
+          <!--HEAD-->
+          <div class="face">
+            <div class="l-eye"></div>
+            <div class="r-eye"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+            <div class="ear">
+              <div class="ear-shadow"></div>
+            </div>
+            <div class="l-cheek"></div>
+            <div class="r-hair"></div>
+            <div class="l-hair"></div>
+            <div class="jaw-shadow"></div>
+          </div>
+
+          <div class="ponytail"></div>
+
+          <div class="neck">
+            <div class="neck-shadow"></div>
+          </div>
+
+          <!-- TORSO -->
+          <div class="belly">
+            <div class="back-shadow"></div>
+          </div>
+          <div class="pelvic-reg"></div>
+
+          <div class="chest">
+            <!-- ARMS -->
+            <div class="r-arm">
+              <div class="r-sleeve"></div>
+              <div class="r-a-shadow"></div>
+            </div>
+          </div>
+
+          <div class="l-arm">
+            <div class="l-sleeve"></div>
+            <div class="l-a-shadow"></div>
+          </div>
+
+          <!-- Legs -->
+          <!-- Right Leg -->
+          <div class="r-thigh">
+            <div class="r-pants"></div>
+            <div class="r-shadow"></div>
+            <div class="r-calf">
+              <!-- Sock -->
+              <div class="sock">
+                <div class="blue-top"></div>
+                <!-- Shoe -->
+                <div class="shoe-base">
+                  <div class="shoe-lining"></div>
+                  <div class="toecap"></div>
+                  <div class="heelcap"></div>
+                  <div class="shoetongue"></div>
+                  <div class="lace1"></div>
+                  <div class="lace2"></div>
+                  <div class="pedal"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left Leg -->
+          <div class="l-thigh">
+            <div class="l-shadow"></div>
+            <div class="l-calf">
+              <div class="darker sock">
+                <div class="blue-top" id="dark-blue"></div>
+                <div class="shoe-base">
+                  <div class="shoe-lining"></div>
+                  <div class="toecap"></div>
+                  <div class="heelcap"></div>
+                  <div class="shoetongue"></div>
+                  <div class="lace lace1"></div>
+                  <div class="lace lace2"></div>
+                  <div class="pedal"></div>
+                </div>
+              </div>
+            </div>
+            <div class="l-pants"></div>
+          </div>
+
+          <!-- End of Girl -->
+        </div>
+
+        <!-- End of Bike -->
+      </div>
+
+      <!-- Environment -->
+      <!-- Wind -->
+      <div class="w1"></div>
+      <div class="w2"></div>
+      <div class="w3"></div>
+
+      <!-- End of box -->
+    </div>
+  </div>
+
+  <div class="race position2" *ngIf="typeOfEvent === 'running'">
+    <div>
+      <button (click)="timerEnd()" class="RaceButton">End</button>
+    </div>
+  </div>
+  <div class="race position3" *ngIf="typeOfEvent === 'cycling'">
+    <div>
+      <button (click)="timerEnd()" class="RaceButton">End</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="state === 2.5" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div> -->
+<div *ngIf="state === '2.5'" class="text-center custom-spinner">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div *ngIf="state === '3'" class="confetti">
+  <div class="race">
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 *ngIf="hasCompletedEvent" class="modal-title">
+          Event Completed 😀
+        </h4>
+        <h4 *ngIf="!hasCompletedEvent" class="modal-title">
+          You could not complete the event 😔
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p class="distance">Distance :{{ totalDistance?.toFixed(2) }} m</p>
+        <p class="time">Time:{{ time }} seconds</p>
+        <p class="speed">Speed:{{ speed?.toFixed(2) }} m/sec</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          *ngIf="hasCompletedEvent"
+          type="button"
+          class="btn btn-outline-success"
+          (click)="modal.close('Close click')"
+        >
+          Close
+        </button>
+        <button
+          *ngIf="!hasCompletedEvent"
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('Close click')"
+        >
+          Close
+        </button>
+      </div>
+    </ng-template>
+    <button
+      class="btn btn-outline-primary mb-2 me-2 view-results-button"
+      (click)="openVerticallyCentered(content)"
+    >
+      View Results
+    </button>
+    <!-- <div>
+      <h1 id="distance">Distance :{{ totalDistance?.toFixed(2) }} m</h1>
+      <h1 id="time">Time:{{ time }} seconds</h1>
+      <h1 id="speed">Speed:{{ speed?.toFixed(2) }} m/sec</h1>
+    </div> -->
+  </div>
+  <div id="confetti-container">
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+    <div class="confetti-piece"></div>
+  </div>
+</div>
+
+<div class="feedback-container" *ngIf="state === '4'">
+  <div class="row feedback-div feedback-heading">Feedback</div>
+  <div class="row feedback-div">
+    <p class="col-6">Difficulty</p>
+    <ngb-rating class="col-6" [(rate)]="difficulty" [max]="5"></ngb-rating>
+  </div>
+  <div class="row feedback-div">
+    <p class="col-6">Satisfaction</p>
+    <ngb-rating class="col-6" [(rate)]="satisfaction" [max]="5"></ngb-rating>
+  </div>
+  <div class="row feedback-div">
+    <p class="col-6">Ease of Access</p>
+    <ngb-rating class="col-6" [(rate)]="ease" [max]="5"></ngb-rating>
+  </div>
+  <div class="row feedback-submit-button">
+    <button (click)="submitFeedback()" class="btn btn-dark">Submit</button>
+  </div>
+</div>

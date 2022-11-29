@@ -1,0 +1,76 @@
+<div [routerLink]="['/events', event.id]" class="event-card">
+  <!-- <p>{{ event.title }}</p> -->
+  <div class="event-image box-shadow--16dp">
+    <!-- <div class="black-part-event-image"></div> -->
+    <img class="specific-event-card" src="{{ dbImage }}" />
+    <div class="card-footer">
+      <p class="text-event-image-title">
+        <b>{{ event.title }}</b>
+      </p>
+
+      <div class="row">
+        <div class="col">
+          <p class="text-event-image" *ngIf="event.type === 'running'">
+            <fa-icon [icon]="faPersonRunning"></fa-icon>
+          </p>
+          <p class="text-event-image" *ngIf="event.type === 'cycling'">
+            <fa-icon [icon]="faPersonBiking"></fa-icon>
+          </p>
+        </div>
+        <div class="col date-and-tag-container">
+          <div class="row month">{{ month }}</div>
+          <div class="row date">{{ date }}</div>
+
+          <div class="row year">{{ year }}</div>
+          <div class="row status-tag" *ngIf="event.status === 'open'">
+            <p class="col">
+              <fa-icon class="col" [icon]="faLockOpen"></fa-icon>
+              {{ event.status }}
+            </p>
+          </div>
+          <div class="row status-tag" *ngIf="event.status === 'closed'">
+            <p class="col">
+              <fa-icon class="col" [icon]="faLock"></fa-icon> {{ event.status }}
+            </p>
+          </div>
+          <div class="row status-tag" *ngIf="event.status === 'upcoming'">
+            <p class="col">
+              <fa-icon class="col" [icon]="faClock"></fa-icon>
+              {{ event.status }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <p class="text-event-image" *ngIf="event.status === 'open'">
+        <fa-icon [icon]="faLockOpen"></fa-icon>
+        {{ event.status }}
+      </p>
+      <p class="text-event-image" *ngIf="event.status === 'closed'">
+        <fa-icon [icon]="faLock"></fa-icon>
+        {{ event.status }}
+      </p>
+      <p class="text-event-image" *ngIf="event.status === 'upcoming'">
+        <fa-icon [icon]="faClock"></fa-icon>
+        {{ event.status }}
+      </p>
+      <p class="text-event-image" *ngIf="event.type === 'running'">
+        <fa-icon [icon]="faPersonRunning"></fa-icon>
+        {{ event.type }}
+      </p>
+      <p class="text-event-image" *ngIf="event.type === 'cycling'">
+        <fa-icon [icon]="faPersonBiking"></fa-icon>
+        {{ event.type }}
+      </p>
+      <p>
+        <fa-icon [icon]="faCalendar"></fa-icon>
+        {{ event.startDate }}
+      </p> -->
+    </div>
+    <div>
+      <button class="register-button-events-page">
+        View Details
+        <fa-icon [icon]="faArrowRight"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>

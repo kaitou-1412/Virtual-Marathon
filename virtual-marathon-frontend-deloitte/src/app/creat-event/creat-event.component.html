@@ -1,0 +1,372 @@
+<div class="rmv">
+  <section class="">
+    <div *ngIf="createOrUpdateState === 1" class="row create-event-heading">
+      Create Event
+    </div>
+    <div *ngIf="createOrUpdateState === 2" class="row create-event-heading">
+      Update Event
+    </div>
+    <form
+      #form="ngForm"
+      [formGroup]="eventForm"
+      (ngSubmit)="onEventFormSubmit()"
+      class="create-issues-form"
+    >
+      <div class="row row1-title-image">
+        <div class="form-group col-lg-6 col-sm-12">
+          <label class="title" for="title">Title</label>
+          <input
+            type="Text"
+            class="form-control formtitle"
+            id="title"
+            placeholder="Title"
+            formControlName="title"
+            [ngClass]="
+              (eventForm.get('title')?.touched ||
+                eventForm.get('title')?.dirty) &&
+              eventForm.get('title')?.hasError('required')
+                ? 'is-invalid'
+                : '' || eventForm.get('userName')?.hasError('minlength')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('title')?.touched ||
+                    eventForm.get('title')?.dirty) &&
+                    !eventForm.get('title')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          />
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("title")?.hasError("required")
+                ? " Title is required"
+                : ""
+            }}
+            {{
+              eventForm.get("title")?.hasError("minlength")
+                ? " Limit exceeded, maximum 40 characters allowed "
+                : ""
+            }}
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-sm-12">
+          <label class="image" for="image ">Image</label>
+          <br />
+          <!-- <input
+            type="text"
+            class="form-control formimage"
+            id="image"
+            placeholder="Enter Image URL"
+            formControlName="imageUrl"
+            [ngClass]="
+              (eventForm.get('imageUrl')?.touched ||
+                eventForm.get('imageUrl')?.dirty) &&
+              eventForm.get('imageUrl')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('imageUrl')?.touched ||
+                    eventForm.get('imageUrl')?.dirty) &&
+                    !eventForm.get('imageUrl')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          />
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("imageUrl")?.hasError("required")
+                ? " Image is required"
+                : ""
+            }}
+          </div> -->
+          <input
+            type="file"
+            formControlName="imageId"
+            class="image-upload-button"
+            (change)="onImageUpload($event)"
+          />
+          <!-- <input
+            type="button"
+            (click)="imageUploadAction()"
+            value="Upload Image"
+            class="btn1"
+          /> -->
+        </div>
+      </div>
+
+      <div class="row row2-startDate-endDate">
+        <div class="form-group col-lg-6 col-sm-12">
+          <label class="startdate" for="startdate ">Start Date</label>
+          <input
+            type="date"
+            class="form-control formstartdate"
+            id="startdate"
+            placeholder="Start Date"
+            formControlName="startDate"
+            (change)="startDateChange()"
+            [ngClass]="
+              (eventForm.get('startDate')?.touched ||
+                eventForm.get('startDate')?.dirty) &&
+              eventForm.get('startDate')?.hasError('required')
+                ? 'is-invalid'
+                : '' || eventForm.get('startDate')?.hasError('LessThanToday')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('startDate')?.touched ||
+                    eventForm.get('startDate')?.dirty) &&
+                    !eventForm.get('startDate')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          />
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("startDate")?.hasError("required")
+                ? " Start Date is required"
+                : ""
+            }}
+            {{
+              eventForm.get("startDate")?.hasError("LessThanToday")
+                ? " Start Date should be greater than current date"
+                : ""
+            }}
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-sm-12">
+          <label class="enddate" for="enddate ">End Date</label>
+          <input
+            type="date"
+            class="form-control formenddate"
+            id="enddate"
+            placeholder="End Date"
+            formControlName="endDate"
+            [ngClass]="
+              (eventForm.get('endDate')?.touched ||
+                eventForm.get('endDate')?.dirty) &&
+              eventForm.get('endDate')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+                  eventForm.get('endDate')?.hasError('startDateLessThanEnd')
+                ? 'is-invalid'
+                : '' || eventForm.get('endDate')?.hasError('LessThanToday')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('endDate')?.touched ||
+                    eventForm.get('endDate')?.dirty) &&
+                    !eventForm.get('endDate')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          />
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("endDate")?.hasError("required")
+                ? " End Date is required"
+                : ""
+            }}
+            {{
+              eventForm.get("endDate")?.hasError("startDateLessThanEnd")
+                ? " End Date should be greater than start date"
+                : ""
+            }}
+            {{
+              eventForm.get("endDate")?.hasError("LessThanToday")
+                ? " End Date should be greater than current date"
+                : ""
+            }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row3-type-status">
+        <div class="col-lg-6 col-sm-12">
+          <label class="type">Type</label>
+          <br />
+          <select class="Otype" formControlName="type">
+            <option value="">Choose option</option>
+            <option value="cycling">Cycling</option>
+            <option value="running">Running</option>
+          </select>
+        </div>
+
+        <!-- <div class="col-lg-6 col-sm-12">
+          <label class="status">Status</label>
+          <br />
+          <select class="Ostatus" formControlName="status">
+            <option value="">Choose option</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+            <option value="upcoming">Upcoming</option>
+          </select>
+        </div> -->
+      </div>
+
+      <div class="row row-4-distance">
+        <div class="form-group">
+          <label class="distance" for="distance">Distance</label>
+          <input
+            type="number"
+            class="form-control form-distance"
+            id="distance"
+            placeholder="Distance"
+            formControlName="distance"
+            [ngClass]="
+              (eventForm.get('distance')?.touched ||
+                eventForm.get('distance')?.dirty) &&
+              eventForm.get('distance')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('distance')?.touched ||
+                    eventForm.get('distance')?.dirty) &&
+                    !eventForm.get('distance')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          />
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("distance")?.hasError("required")
+                ? " Distance is required"
+                : ""
+            }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-5-description">
+        <div class="form-group">
+          <label class="desc" for="desc ">Description</label>
+          <br />
+          <textarea
+            class="formdesc"
+            name="textarea"
+            placeholder="Write description"
+            formControlName="description"
+            [ngClass]="
+              (eventForm.get('description')?.touched ||
+                eventForm.get('description')?.dirty) &&
+              eventForm.get('description')?.hasError('required')
+                ? 'is-invalid'
+                : '' ||
+                  ((eventForm.get('description')?.touched ||
+                    eventForm.get('description')?.dirty) &&
+                    !eventForm.get('description')?.invalid)
+                ? 'is-valid'
+                : ''
+            "
+          ></textarea>
+          <div class="invalid-feedback">
+            {{
+              eventForm.get("description")?.hasError("required")
+                ? " Description is required"
+                : ""
+            }}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-6-faq">
+        <p class="faqbtn col">FAQs</p>
+        <button type="button" (click)="addFaq()" class="col faqbtn-icon">
+          +
+        </button>
+        <ng-container *ngIf="createOrUpdateState === 1" formArrayName="faq">
+          <ng-container *ngFor="let faqForm of faq.controls; let i = index">
+            <div [formGroupName]="i" class="row">
+              <input
+                formControlName="question"
+                class="question-create-event-page row"
+                placeholder="Question"
+              />
+              <input
+                formControlName="answer"
+                class="answer-create-event-page row"
+                placeholder="Answer"
+              />
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="createOrUpdateState === 2" formArrayName="faq">
+          <!-- <ng-container *ngFor="let faqForm of data.faq; let i = index">
+            <div class="row">
+              <input
+                class="question-create-event-page row"
+                placeholder="{{ faqForm.question }}"
+                value="{{ faqForm['question'] }}"
+              />
+
+              <input
+                class="answer-create-event-page row"
+                placeholder="{{ faqForm.answer }}"
+                value="{{ faqForm['answer'] }}"
+              />
+            </div>
+          </ng-container> -->
+
+          <ng-container *ngFor="let faqForm of faq.controls; let i = index">
+            <div class="row" *ngIf="i < data.faq.length">
+              <input
+                class="question-create-event-page row"
+                placeholder=""
+                value="{{ data.faq[i]['question'] }}"
+              />
+
+              <input
+                class="answer-create-event-page row"
+                placeholder=""
+                value="{{ data.faq[i]['answer'] }}"
+              />
+            </div>
+            <div [formGroupName]="i" class="row" *ngIf="i >= data.faq.length">
+              <!-- hello{{ faqForm.get(["question"]) }} -->
+
+              <input
+                formControlName="question"
+                class="question-create-event-page row"
+                placeholder="Question"
+              />
+              <input
+                formControlName="answer"
+                class="answer-create-event-page row"
+                placeholder="Answer"
+              />
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <div class="row row-7-create-reset-button">
+        <!-- <div>{{ typeof createOrUpdateState }}</div> -->
+        <button
+          *ngIf="createOrUpdateState === 1"
+          type="submit"
+          [disabled]="!form.valid"
+          class="col create-button-create-event"
+        >
+          CREATE
+        </button>
+
+        <button
+          *ngIf="createOrUpdateState === 2"
+          type="submit"
+          [disabled]="!form.valid"
+          class="col create-button-create-event"
+        >
+          UPDATE
+        </button>
+
+        <button type="reset" class="col reset-button-create-event">
+          RESET
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
+
+<!-- <div class="row">
+  <div class="footer-bg footer">
+    <p class="footer-text-page">Copyright © 2022 All Rights Reserved</p>
+  </div>
+</div> -->

@@ -1,0 +1,174 @@
+<div>
+  <img class="backimg" src="{{ dbImage }}" alt="" />
+</div>
+<div class="row event-name-register-button-container">
+  <h1 class="col-4 eventname">
+    <b>{{ eventName }} &nbsp;&nbsp;&nbsp;</b>
+    <fa-icon *ngIf="type === 'cycling'" [icon]="faPersonBiking"></fa-icon>
+    <fa-icon *ngIf="type === 'running'" [icon]="faPersonRunning"></fa-icon>
+  </h1>
+
+  <!-- for participant and for organizer who has not created that event-->
+  <button
+    class="col-8 btn register"
+    *ngIf="state && participant"
+    (click)="onRegisterParticipant()"
+    type="submit"
+  >
+    Register
+  </button>
+  <div
+    *ngIf="organizerIdOfSelectedEvent === signedinUser"
+    class="col-4 update-and-delete-buttons-event-details-page"
+  >
+    <fa-icon
+      class="updateEventButton"
+      (click)="onUpdateOrganizer()"
+      [icon]="faPenToSquare"
+    ></fa-icon>
+    <fa-icon
+      class="deleteEventButton"
+      (click)="onDeleteOrganizer()"
+      [icon]="faTrashCan"
+    ></fa-icon>
+  </div>
+
+  <!-- for participant -->
+  <div
+    *ngIf="state === 0 && !hasStartedEvent && status === 'open'"
+    class="col-4 goTo-and-cancel-buttons-event-details-page"
+  >
+    <button class="btn goToRaceButton" (click)="goToRaceButton()" type="submit">
+      Go To Race
+    </button>
+    <button
+      class="btn cancelButton"
+      (click)="onCancelParticipant()"
+      type="submit"
+    >
+      Cancel
+    </button>
+  </div>
+  <div
+    *ngIf="state === 0 && !hasStartedEvent && status === 'upcoming'"
+    class="col-4 message-to-user-regarding-event"
+  >
+    <p class="" type="submit">Event has not started yet</p>
+  </div>
+  <div
+    *ngIf="state === 0 && !hasStartedEvent && status === 'closed'"
+    class="col-4 message-to-user-regarding-event"
+  >
+    <p class="" type="submit">Event is finished</p>
+  </div>
+  <div *ngIf="hasStartedEvent" class="col-4 message-to-user-regarding-event">
+    <p class="" type="submit">You have already participated in this event</p>
+  </div>
+</div>
+<div class="row eventNameRow">
+  <p class="col-9 text-second-row">
+    <span>Created by </span>{{ nameOfOrganizer }}
+  </p>
+
+  <p class="col-1 label-start-date lable-date">Starts On</p>
+  <p class="col-1 lable-date">Ends On</p>
+</div>
+<div class="row tags-container">
+  <div class="col-1 distance-tag">{{ event?.distance }} m</div>
+  <div class="col-1 status-tag">
+    <fa-icon *ngIf="event?.status === 'upcoming'" [icon]="faClock"></fa-icon>
+    <fa-icon *ngIf="event?.status === 'open'" [icon]="faLockOpen"></fa-icon>
+    <fa-icon *ngIf="event?.status === 'closed'" [icon]="faLock"></fa-icon>
+    {{ event?.status }}
+  </div>
+  <div class="col-1 start-date-container date-container">
+    <!-- <p class="col-1 lable-date">Starts On</p> -->
+    <div class="row month">{{ monthStartDate }}</div>
+    <div class="row date">{{ dateStartDate }}</div>
+
+    <div class="row year">{{ yearStartDate }}</div>
+  </div>
+
+  <div class="col-1 date-container">
+    <!-- <p class="col-1 lable-date">Ends On</p> -->
+    <div class="row month">{{ monthEndDate }}</div>
+    <div class="row date">{{ dateEndDate }}</div>
+
+    <div class="row year">{{ yearEndDate }}</div>
+  </div>
+</div>
+
+<!-- <div class="row second-row-events-detail-page">
+  <p class="col text-second-row"><span>Start Date: </span>{{ startDate }}</p>
+  <p class="col text-second-row"><span>End Date: </span>{{ endDate }}</p>
+  <p class="col text-second-row"><span>Type: </span>{{ event?.type }}</p>
+  <p class="col text-second-row"><span>Status: </span>{{ event?.status }}</p>
+  <p class="col text-second-row">
+    <span>Distance: </span>{{ event?.distance }}
+  </p>
+</div> -->
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs tabs-container">
+  <li class="tabs-item" [ngbNavItem]="3">
+    <a ngbNavLink>FAQ</a>
+    <ng-template ngbNavContent>
+      <div class="faq-event-details" *ngFor="let faq of faqs">
+        <!-- <h5 class="question-faq-event-details">{{ faq.question }}</h5>
+        <p class="answer-faq-event-details">{{ faq.answer }}</p> -->
+        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+          <ngb-panel
+            class="question-faq-event-details"
+            title="{{ faq.question }}"
+          >
+            <ng-template class="answer-faq-event-details" ngbPanelContent>
+              {{ faq.answer }}
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+      </div>
+    </ng-template>
+  </li>
+  <li class="tabs-item" [ngbNavItem]="2">
+    <a ngbNavLink>About the Event</a>
+    <ng-template ngbNavContent>
+      <p class="about-event-eventdetails">{{ event?.description }}</p>
+    </ng-template>
+  </li>
+  <li class="tabs-item" [ngbNavItem]="1">
+    <a ngbNavLink>LeaderBoard</a>
+    <ng-template ngbNavContent>
+      <!-- <p class="about-event-eventdetails">LeaderBoard table</p> -->
+      <p *ngIf="trackingDetailsArrayLength === 0" class="no-participants-text">
+        No participants yet!
+      </p>
+      <table
+        *ngIf="trackingDetailsArrayLength !== 0"
+        class="table table-striped table-custom"
+      >
+        <thead>
+          <tr>
+            <th class="heading-table col-4" scope="col">Rank</th>
+            <th class="heading-table col-4" scope="col">Participant's Name</th>
+            <th class="heading-table col-4" scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trackingDetail of trackingDetails; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+              {{ trackingDetail.participant.userFullName }}
+            </td>
+            <td>{{ trackingDetail.time }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<!-- <div>
+  <button class="btn faq" type="submit">FAQs</button>
+  <button class="btn abtevent" type="submit">About the Event</button>
+</div> -->

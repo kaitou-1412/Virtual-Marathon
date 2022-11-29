@@ -1,0 +1,137 @@
+.temp {
+  // background-color: #944b75;
+  background-color: #f48f44;
+  // position: fixed;
+  // background-color: rgb(34, 133, 108);
+  color: white;
+  // height: 100%;
+  // margin-top: 7%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 100;
+  // height: 11.2vh;
+}
+
+// .navbar-nav > .active > a {
+//   color: #634938 !important;
+// }
+
+.active-link {
+  color: #634938 !important;
+}
+
+.nav-tabs-custom {
+  padding-right: 17%;
+  // border: 2px solid green;
+  ul {
+    // li.active {
+    //   color: #634938 !important;
+    // }
+    li {
+      white-space: nowrap;
+      margin: 0 4%;
+      font-size: 25px;
+      font-weight: 700;
+      // border: 2px solid white;
+
+      a:hover {
+        color: #634938 !important;
+      }
+      // .active {
+      //   color: #634938 !important;
+      // }
+      // a:hover {
+      //   // color: #634938;
+      //   background-color: #634938;
+      // }
+      // button {
+      //   font-weight: 900;
+      //   width: 140px;
+      //   height: 53px;
+      //   font-family: "Roboto", sans-serif;
+      //   font-size: 20px;
+      //   text-transform: uppercase;
+      //   letter-spacing: 2.5px;
+
+      //   // color: #000;
+      //   color: #634938;
+      //   background-color: white;
+      //   border: none;
+      //   border-radius: 45px;
+      //   // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      //   transition: all 0.3s ease 0s;
+      //   cursor: pointer;
+      //   outline: none;
+      //   // margin: 0 2%;
+      // }
+
+      button::before {
+        background-color: rgb(28, 31, 30) !important;
+        transition: 0.3s ease-out;
+      }
+      button {
+        // color: rgb(28, 31, 30);
+        // border: 1px solid rgb(28, 31, 30);
+        font-weight: 900;
+        width: 140px;
+        height: 53px;
+        font-family: "Roboto", sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+
+        // color: #000;
+        color: #634938;
+        background-color: white;
+        border: none;
+        border-radius: 45px;
+        // box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+        // margin: 0 2%;
+        transition: 0.2s;
+      }
+      button:hover {
+        color: rgb(255, 255, 255);
+        background-color: #634938;
+        transition: 0.2s 0.1s;
+      }
+      // button:hover {
+      //   color: black;
+      // }
+      button.hover-opacity::before {
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+      }
+      button.hover-opacity:hover::before {
+        opacity: 1;
+      }
+    }
+    // li:hover {
+    //   background-color: #634938;
+    // }
+  }
+}
+nav ::ng-deep a {
+  color: white !important;
+}
+.navbar-brand {
+  color: white;
+  font-weight: 900;
+  font-size: 40px;
+  margin-left: 2%;
+  fa-icon {
+    color: white;
+    font-size: 50px;
+  }
+}
+
+.navbar {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

@@ -1,0 +1,175 @@
+<div class="left-container-login-page">
+  <img class="left-side" src="assets/images/cycle3.jpg" />
+</div>
+
+<div class="right-side">
+  <h1 class="mb-4">Signup</h1>
+  <form
+    #form="ngForm"
+    [formGroup]="signupForm"
+    name="form"
+    (ngSubmit)="doSignup()"
+  >
+    <div class="form-outline mb-4">
+      <input
+        type="text"
+        placeholder="UserName"
+        class="form-control form-control-lg"
+        formControlName="userName"
+        [ngClass]="
+          (signupForm.get('userName')?.touched ||
+            signupForm.get('userName')?.dirty) &&
+          signupForm.get('userName')?.hasError('required')
+            ? 'is-invalid'
+            : '' || signupForm.get('userName')?.hasError('minlength')
+            ? 'is-invalid'
+            : '' ||
+              ((signupForm.get('userName')?.touched ||
+                signupForm.get('userName')?.dirty) &&
+                !signupForm.get('userName')?.invalid)
+            ? 'is-valid'
+            : ''
+        "
+      />
+
+      <div class="invalid-feedback">
+        {{
+          signupForm.get("userName")?.hasError("required")
+            ? " Name is required"
+            : ""
+        }}
+        {{
+          signupForm.get("userName")?.hasError("minlength")
+            ? " 5 letters required"
+            : ""
+        }}
+      </div>
+    </div>
+
+    <div *ngIf="!uniqueUser">
+      <p class="row" *ngFor="let alert of alerts">
+        <ngb-alert
+          *ngIf="!uniqueUser"
+          [type]="alert.type"
+          (closed)="close(alert)"
+          >{{ alert.message }}</ngb-alert
+        >
+      </p>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input
+        type="text"
+        placeholder="UserFullName"
+        class="form-control form-control-lg"
+        formControlName="userFullName"
+        [ngClass]="
+          (signupForm.get('userFullName')?.touched ||
+            signupForm.get('userFullName')?.dirty) &&
+          signupForm.get('userFullName')?.hasError('required')
+            ? 'is-invalid'
+            : '' ||
+              ((signupForm.get('userFullName')?.touched ||
+                signupForm.get('userFullName')?.dirty) &&
+                !signupForm.get('userFullName')?.invalid)
+            ? 'is-valid'
+            : ''
+        "
+      />
+
+      <div class="invalid-feedback">
+        {{
+          signupForm.get("userName")?.hasError("required")
+            ? " Name is required"
+            : ""
+        }}
+      </div>
+    </div>
+
+    <div class="form-outline mb-4">
+      <input
+        type="email"
+        placeholder="Gmail"
+        class="form-control form-control-lg"
+        formControlName="gmail"
+        [ngClass]="
+          (signupForm.get('gmail')?.touched ||
+            signupForm.get('gmail')?.dirty) &&
+          signupForm.get('gmail')?.hasError('required')
+            ? 'is-invalid'
+            : '' || signupForm.get('gmail')?.hasError('email')
+            ? 'is-invalid'
+            : '' ||
+              ((signupForm.get('gmail')?.touched ||
+                signupForm.get('gmail')?.dirty) &&
+                !signupForm.get('gmail')?.invalid)
+            ? 'is-valid'
+            : ''
+        "
+      />
+      <div class="invalid-feedback">
+        {{
+          signupForm.get("gmail")?.hasError("required")
+            ? " gmail is required"
+            : ""
+        }}
+        {{
+          signupForm.get("gmail")?.hasError("email")
+            ? " Format : abc@gmail.com"
+            : ""
+        }}
+      </div>
+    </div>
+    <div class="form-outline mb-4">
+      <input
+        type="password"
+        placeholder="Password"
+        class="form-control form-control-lg"
+        formControlName="userPassword"
+        [ngClass]="
+          (signupForm.get('userPassword')?.touched ||
+            signupForm.get('userPassword')?.dirty) &&
+          signupForm.get('userPassword')?.hasError('required')
+            ? 'is-invalid'
+            : '' || signupForm.get('gmail')?.hasError('email')
+            ? 'is-invalid'
+            : '' ||
+              ((signupForm.get('userPassword')?.touched ||
+                signupForm.get('userPassword')?.dirty) &&
+                !signupForm.get('userPassword')?.invalid)
+            ? 'is-valid'
+            : ''
+        "
+      />
+      <div class="invalid-feedback">
+        {{
+          signupForm.get("userPassword")?.hasError("required")
+            ? " Password is required"
+            : ""
+        }}
+
+        {{
+          signupForm.get("userName")?.hasError("minlength")
+            ? " 5 letters required"
+            : ""
+        }}
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <select (change)="selectedCategory($event)" class="Ocategory">
+        <option value="">Role</option>
+        <option value="participant">Participant</option>
+        <option value="organizer">Organizer</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary loginbutton" type="submit">Signup</button>
+  </form>
+
+  <br />
+
+  <div class="mb-4">
+    Have account? <a href="/login" routerLink="/login">Login</a>
+  </div>
+</div>

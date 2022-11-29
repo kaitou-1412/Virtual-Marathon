@@ -1,0 +1,117 @@
+<div class="row left-container-login-page">
+  <img class="col left-side" src="assets/images/cycle3.jpg" />
+
+  <div class="col right-side">
+    <h1 class="mb-4">Login</h1>
+
+    <form
+      #form="ngForm"
+      [formGroup]="loginForm"
+      name="form"
+      (ngSubmit)="doSignin()"
+    >
+      <div class="row mb-4">
+        <input
+          type="text"
+          placeholder="User Name"
+          class="form-control form-control-lg width-custom-form-control"
+          name="userName"
+          id="userName"
+          formControlName="userName"
+          [ngClass]="
+            (loginForm.get('userName')?.touched ||
+              loginForm.get('userName')?.dirty) &&
+            loginForm.get('userName')?.hasError('required')
+              ? 'is-invalid'
+              : '' || loginForm.get('userName')?.hasError('minlength')
+              ? 'is-invalid'
+              : '' ||
+                ((loginForm.get('userName')?.touched ||
+                  loginForm.get('userName')?.dirty) &&
+                  !loginForm.get('userName')?.invalid)
+              ? 'is-valid'
+              : ''
+          "
+        />
+        <div class="invalid-feedback">
+          {{
+            loginForm.get("userName")?.hasError("required")
+              ? " Name is required"
+              : ""
+          }}
+          {{
+            loginForm.get("userName")?.hasError("minlength")
+              ? " 5 letters required"
+              : ""
+          }}
+        </div>
+      </div>
+      <div class="row mb-4">
+        <input
+          type="password"
+          placeholder="Password"
+          class="form-control form-control-lg width-custom-form-control"
+          name="password"
+          formControlName="userPassword"
+          [ngClass]="
+            (loginForm.get('userPassword')?.touched ||
+              loginForm.get('userPassword')?.dirty) &&
+            loginForm.get('userPassword')?.hasError('required')
+              ? 'is-invalid'
+              : '' || loginForm.get('userPassword')?.hasError('minlength')
+              ? 'is-invalid'
+              : '' ||
+                ((loginForm.get('userPassword')?.touched ||
+                  loginForm.get('userPassword')?.dirty) &&
+                  !loginForm.get('userPassword')?.invalid)
+              ? 'is-valid'
+              : ''
+          "
+        />
+        <div class="invalid-feedback">
+          {{
+            loginForm.get("userPassword")?.hasError("required")
+              ? " Password is required"
+              : ""
+          }}
+          {{
+            loginForm.get("userPassword")?.hasError("minlength")
+              ? " 5 characters required"
+              : ""
+          }}
+        </div>
+      </div>
+
+      <!-- <div class="row mb-4">
+        <select (change)="selectedOption($event)" class="Ocategory">
+          <option value="">Role</option>
+          <option value="participant">Participant</option>
+          <option value="organizer">Organizer</option>
+        </select>
+      </div> -->
+
+      <button
+        [disabled]="loginForm.invalid"
+        class="row btn btn-primary loginbutton width-custom-button"
+        type="submit"
+      >
+        Login
+      </button>
+
+      <p class="row mb-4 mt-4 alert-custom" *ngFor="let alert of alerts">
+        <ngb-alert
+          *ngIf="wrongCredentials"
+          [type]="alert.type"
+          (closed)="close(alert)"
+          >{{ alert.message }}</ngb-alert
+        >
+      </p>
+    </form>
+
+    <br />
+
+    <div class="mb-4 last-row-custom">
+      Don't have a account? <a href="/signup" routerLink="/signup">Signup</a>
+    </div>
+  </div>
+</div>

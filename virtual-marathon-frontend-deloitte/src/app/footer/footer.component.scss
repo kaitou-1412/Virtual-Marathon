@@ -1,0 +1,18 @@
+.footer-text-page {
+  position: absolute;
+  left: 40%;
+  top: 20%;
+}
+
+.footer-div {
+  text-align: center;
+  padding: 25px 0;
+  background-color: #1d262d;
+  p {
+    margin: 0;
+    letter-spacing: 1px;
+    span {
+      margin: 0 10px;
+    }
+  }
+}

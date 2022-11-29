@@ -1,0 +1,182 @@
+.create-event-heading {
+  margin-bottom: 2%;
+  color: #59595b;
+  font-size: 32px;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.row1-title-image {
+  margin: 2%;
+}
+
+.formtitle {
+  color: Black;
+
+  background-color: #f7f8fa;
+  border: none;
+}
+::placeholder {
+  color: grey;
+}
+
+.formimage {
+  background-color: #f7f8fa;
+  border: none;
+}
+
+.row2-startDate-endDate {
+  margin: 2%;
+}
+
+.formstartdate {
+  cursor: pointer;
+  color: #777778;
+
+  background-color: #f7f8fa;
+  border: none;
+}
+
+.formenddate {
+  cursor: pointer;
+
+  color: #777778;
+  background-color: #f7f8fa;
+  border: none;
+}
+
+.row3-type-status {
+  margin: 2%;
+}
+
+.Otype {
+  cursor: pointer;
+  background: #f7f8fa;
+  background-color: #f7f8fa;
+  color: #777778;
+  border: none;
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+  padding: 1.5%;
+}
+
+.Ostatus {
+  padding: 1.5%;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+
+  background: #f7f8fa;
+  background-color: #f7f8fa;
+
+  color: #777778;
+  border: none;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.row-4-distance {
+  margin: 2%;
+}
+.form-distance {
+  cursor: pointer;
+
+  color: #777778;
+  background-color: #f7f8fa;
+  border: none;
+}
+
+.row-5-description {
+  margin: 2%;
+}
+.formdesc {
+  background-color: #f7f8fa;
+  border: none;
+  width: 100%;
+}
+
+.row-6-faq {
+  // margin: 2%;
+  margin-left: 2%;
+  // border: 2px solid green;
+  align-items: center;
+  justify-content: center;
+  // font-size: 20px;
+}
+.faqbtn-icon {
+  font-size: 35px;
+  border: none;
+  background-color: white;
+  padding: 0;
+  color: #f48f44;
+  margin-right: 91%;
+  margin-bottom: 1%;
+  margin-top: 0%;
+}
+
+.question-create-event-page {
+  margin-top: 1%;
+  background-color: #f7f8fa;
+  border: none;
+  padding: 0.5%;
+  // margin-left: 1%;
+  // margin-right: 3%;
+}
+
+.answer-create-event-page {
+  margin-top: 1%;
+  background-color: #f7f8fa;
+  border: none;
+  padding: 0.5%;
+  // margin-left: 1%;
+  // margin-right: 15%;
+}
+
+.row-7-create-reset-button {
+  margin: 2%;
+  // align-items: flex-start;
+}
+.create-button-create-event {
+  background-color: #f48f44;
+  color: white;
+  margin-left: 30%;
+  margin-right: 10%;
+  padding: 1%;
+}
+
+.reset-button-create-event {
+  border-color: rgb(172, 169, 169);
+  color: black;
+  background-color: rgb(248, 244, 244);
+  margin-right: 30%;
+}
+
+.footer-bg {
+  background-color: black;
+
+  color: white;
+  width: 100%;
+  height: 10%;
+}
+.footer-text-page {
+  margin-left: 40%;
+  // margin-left: 20%;
+}
+
+@media screen and (max-width: 700px) {
+  .create-button-create-event {
+    // background-color: green;
+    margin-left: 25%;
+    margin-right: 20%;
+  }
+
+  .footer-text-page {
+    margin-left: 30%;
+    white-space: nowrap;
+  }
+
+  .reset-button-create-event {
+    margin-top: 1%;
+    margin-left: 25%;
+    margin-right: 20%;
+  }
+}

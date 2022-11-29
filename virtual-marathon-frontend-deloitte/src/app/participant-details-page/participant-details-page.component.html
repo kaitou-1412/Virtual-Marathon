@@ -1,0 +1,268 @@
+<div class="d-flex full-container-participants-page">
+  <ul
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav-pills side-navbar-custom"
+    orientation="vertical"
+  >
+    <li ngbNavItem="profile">
+      <a ngbNavLink>Profile</a>
+      <ng-template ngbNavContent>
+        <div class="profile-container">
+          <div class="row profile-heading-container">
+            <fa-icon class="col-2 profile-heading" [icon]="faUser"></fa-icon>
+            <p class="col-2 profile-heading">Profile</p>
+          </div>
+          <div class="values-container">
+            <div class="row profile-field-container">
+              <p class="col-4 top-div-text-participant-detail-page">Name:</p>
+              <p class="col-4 top-div-text-value-participant-detail-page">
+                <b>{{ name }}</b>
+              </p>
+            </div>
+            <div class="row profile-field-container">
+              <p class="col-4 top-div-text-participant-detail-page">
+                Username:
+              </p>
+              <p class="col-4 top-div-text-value-participant-detail-page">
+                <b>{{ username }}</b>
+              </p>
+            </div>
+
+            <div class="row profile-field-container">
+              <p class="col-4 top-div-text-participant-detail-page">Gmail:</p>
+              <p class="col-4 top-div-text-value-participant-detail-page">
+                <b>{{ gmail }}</b>
+              </p>
+            </div>
+            <div class="row profile-field-container">
+              <p class="col-4 top-div-text-participant-detail-page">Role:</p>
+              <p class="col-4 top-div-text-value-participant-detail-page">
+                <b>{{ role }}</b>
+              </p>
+            </div>
+            <div class="row">
+              <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">
+                    Profile update
+                  </h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form
+                    #form="ngForm"
+                    [formGroup]="profileUpdateForm"
+                    (ngSubmit)="onProfileUpdateFormSubmit()"
+                  >
+                    <div class="mb-3">
+                      <label for="name">Name</label>
+
+                      <div class="input-group">
+                        <input
+                          id="userFullName"
+                          class="form-control"
+                          formControlName="userFullName"
+                          placeholder="Enter Full Name"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="userName">Password</label>
+
+                      <div class="input-group">
+                        <input
+                          id="userPassword"
+                          type="password"
+                          class="form-control"
+                          placeholder="Enter Password"
+                          formControlName="userPassword"
+                        />
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="gmail">Gmail</label>
+
+                      <div class="input-group">
+                        <input
+                          id="gmail"
+                          type="email"
+                          class="form-control"
+                          placeholder="Enter Gmail Id "
+                          formControlName="gmail"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button
+                        type="submit"
+                        class="btn btn-outline-dark"
+                        (click)="modal.close('Save click')"
+                        [disabled]="!form.valid"
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </ng-template>
+
+              <button
+                (click)="open(content)"
+                class="btn update-profile-btn-custom box-shadow--8dp"
+              >
+                Update Profile
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- <p class="row top-div-text-participant-detail-page">Events:</p> -->
+      </ng-template>
+    </li>
+    <li ngbNavItem="events">
+      <a ngbNavLink>Events</a>
+      <ng-template ngbNavContent>
+        <div class="row events-container">
+          <nav
+            *ngFor="let event of allEventsOfUser"
+            class="events col-xl-6 col-lg-6 col-md-6 col-sm-12"
+          >
+            <app-card [event]="event.event"></app-card>
+          </nav>
+          <nav
+            *ngFor="let event of allTheRegisteredEvents"
+            class="events col-xl-6 col-lg-6 col-md-6 col-sm-12"
+          >
+            <app-card [event]="event"></app-card>
+          </nav>
+        </div>
+      </ng-template>
+    </li>
+    <li ngbNavItem="graphs">
+      <a ngbNavLink>Graphs</a>
+      <ng-template *ngIf="role === 'participant'" ngbNavContent>
+        <form class="row graphs-radio-button-container">
+           
+          <div class="col-4">
+            <input
+              type="radio"
+              id="pieChart"
+              name="graphs"
+              value="pieChart"
+              (click)="pieChart()"
+              checked="checked"
+              class="graph-heading"
+            />
+             
+            <label for="pieChart"
+              >Successfully Completed vs Partially Completed </label
+            ><br />
+          </div>
+           
+          <div class="col-2">
+            <input
+              type="radio"
+              id="lineGraph"
+              name="graphs"
+              value="lineGraph"
+              (click)="lineGraph()"
+            />
+              <label for="lineGraph">Speed vs Event </label><br />
+          </div>
+           
+          <div class="col-2">
+            <input
+              type="radio"
+              id="barGraph"
+              name="graphs"
+              value="barGraph"
+              (click)="barGraph()"
+            />
+              <label for="barGraph">Distance vs Event</label>
+          </div>
+        </form>
+        <div *ngIf="graphStateParticipant === 1" class="graph-custom">
+          <app-pie-chart></app-pie-chart>
+        </div>
+        <div *ngIf="graphStateParticipant === 2" class="graph-custom">
+          <app-line-graph></app-line-graph>
+        </div>
+        <div *ngIf="graphStateParticipant === 3" class="graph-custom">
+          <app-bar-graph></app-bar-graph>
+        </div>
+      </ng-template>
+      <ng-template *ngIf="role === 'organizer'" ngbNavContent>
+        <form class="row graphs-radio-button-container">
+           
+          <div class="col-2 radio-button-container">
+            <input
+              type="radio"
+              id="pieChart"
+              name="graphs"
+              value="pieChart"
+              (click)="pieChartCompletionRate()"
+              checked="checked"
+            />
+              <label for="pieChart">Completion Rate</label><br />
+          </div>
+           
+          <div class="col-4 radio-button-container">
+            <input
+              type="radio"
+              id="barGraph"
+              name="graphs"
+              value="barGraph"
+              (click)="BarGraphFeedback()"
+            />
+              <label for="lineGraph">Feedback</label><br />
+          </div>
+
+          <div class="col-4">
+            <div ngbDropdown class="d-inline-block">
+              <label for="dropdownBasic1" class="row">Select Event</label>
+              <button
+                class="btn row dropdown-custom"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+              >
+                {{ eventTitle }}
+              </button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button
+                  class=""
+                  *ngFor="let event of allTheRegisteredEvents"
+                  ngbDropdownItem
+                  (click)="selectedEvent(event.id)"
+                >
+                  {{ event.title }}
+                </button>
+
+                <!-- <button ngbDropdownItem>Another Action</button>
+                <button ngbDropdownItem>Something else is here</button> -->
+              </div>
+            </div>
+          </div>
+        </form>
+        <div *ngIf="graphStateOrganizer === 1" class="graph-custom">
+          <app-pie-chart-organizer
+            [eventId]="eventId"
+          ></app-pie-chart-organizer>
+        </div>
+        <div *ngIf="graphStateOrganizer === 2" class="graph-custom h-100">
+          <app-bar-graph-feedback-organizer
+            [eventId]="eventId"
+          ></app-bar-graph-feedback-organizer>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>

@@ -1,0 +1,27 @@
+name: vertual-marathon-frontend
+on:
+  push:
+    branches: deloitte
+env:
+  Repo_name: ${{ github.event.repository.name }}
+  Service_name: vertualmarathon-frontend
+jobs:
+  vurtual-marathon-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCR_SA_KEY }}'
+      - name: vertualmarathon-frontend
+        run: |
+          gcloud config set project us-gcp-ame-con-116-npd-1
+          docker build -t gcr.io/us-gcp-ame-con-116-npd-1/$Repo_name/$Service_name:$GITHUB_SHA .
+          gcloud auth configure-docker -q
+          docker push gcr.io/us-gcp-ame-con-116-npd-1/$Repo_name/$Service_name:$GITHUB_SHA
+      - name: Deploy
+        id: deploy
+        run: |
+          gcloud run deploy $Service_name --image gcr.io/us-gcp-ame-con-116-npd-1/$Repo_name/$Service_name:$GITHUB_SHA --platform managed --port=4200 --region us-west2 --allow-unauthenticated
+          

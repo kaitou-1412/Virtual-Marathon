@@ -1,0 +1,101 @@
+// .vh-100 {
+//   //  background: linear-gradient(90deg,hsla(205,46%,30%,1) 0%, hsla(260,29%,36%,1) 100%);
+//   background-image: url("../../assets/background2.jpg");
+//   width: 100%;
+//   height: auto;
+//   background-size: 100% 100%;
+// }
+
+// .Participant {
+//   width: 50%;
+//   border: none;
+//   padding: 14px 28px;
+//   font-size: 16px;
+//   cursor: pointer;
+//   text-align: center;
+//   background: #f0f0f0;
+//   border: 2px solid grey;
+//   border-radius: 2px;
+// }
+
+// .Organiser {
+//   width: 50%;
+//   border: none;
+//   padding: 14px 28px;
+//   font-size: 16px;
+//   cursor: pointer;
+//   text-align: center;
+//   background: #f0f0f0;
+//   border: 2px solid grey;
+//   border-radius: 2px;
+// }
+// .mb-5 {
+//   margin-top: 20px;
+// }
+
+// .signupbutton {
+//   margin-top: 3%;
+//   width: 100%;
+//   border: none;
+//   padding: 14px 28px;
+//   font-size: 16px;
+//   cursor: pointer;
+//   text-align: center;
+//   background: black;
+//   border: 2px solid black;
+//   color: white;
+//   border-radius: 2px;
+// }
+
+// .Ocategory {
+//   margin-top: 3%;
+//   width: 100%;
+//   border: none;
+//   padding: 14px 28px;
+//   font-size: 16px;
+//   cursor: pointer;
+//   // text-align: center;
+//   background: grey;
+//   border: 2px solid black;
+//   color: white;
+//   border-radius: 2px;
+// }
+
+// .catbutton {
+//   width: -webkit-fill-available;
+// }
+
+// .ngbDropdownItem {
+//   width: inherit;
+// }
+// .cardlogin {
+//   background-color: rgba(100, 100, 100, 0.7);
+// }
+
+.left-container-login-page {
+  height: 89.5vh;
+  width: 50%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.right-side {
+  position: absolute;
+  left: 60%;
+  top: 25%;
+}
+
+.Ocategory {
+  width: 100%;
+  height: 40px;
+  color: gray;
+}
+
+.loginbutton {
+  width: 100%;
+  height: 50px;
+}

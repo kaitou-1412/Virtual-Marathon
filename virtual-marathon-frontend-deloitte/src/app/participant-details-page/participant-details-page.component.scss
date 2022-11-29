@@ -1,0 +1,233 @@
+.nav-pills .nav-link.active {
+  background-color: #28343e;
+  width: 330px;
+  border-left: 5px solid #fe7912;
+  color: #fe7912;
+}
+
+.nav-pills {
+  height: 100%;
+  // width: 20%;
+  li {
+    border-color: #1d262d !important  ;
+    font-size: 20px;
+  }
+}
+
+// a#ngb-nav-2.nav-link {
+//   border: 3px solid white;
+//   border-color: green;
+// }
+.nav-link {
+  color: white;
+}
+
+.full-container-participants-page {
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.side-navbar-custom {
+  // position: fixed;
+  // height: 100vh;
+  // margin-top: 40%;
+  color: white;
+  background-color: #1d262d;
+}
+
+// .events-container {
+//   margin-left: 20%;
+// }
+
+.events {
+  // width: 500px;
+  // margin-left: 18%;
+}
+//actual
+// .whole-participant-details-page {
+//   overflow-x: hidden;
+// }
+
+// .left {
+//   width: 20%;
+//   float: left;
+// }
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav li {
+  margin: 1px 0;
+  border: 1px solid #999;
+}
+.nav li a {
+  display: block;
+  line-height: 3em;
+  width: 100%;
+  text-decoration: none;
+}
+
+.profile-container {
+  width: 600px;
+  height: 530px;
+  border: 5px solid #f48f44;
+  border-radius: 20px;
+  margin-left: 38%;
+  margin-top: 10%;
+  background-color: #fbe2cf;
+  // display: flex;
+  // flex-direction: column;
+  .profile-field-container {
+    margin-left: 20%;
+    // display: flex;
+    // // width: 600px;
+    // margin-top: 15%;
+    // border: 2px solid red;
+    // align-items: space-around;
+  }
+}
+
+.profile-heading-container {
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+.profile-heading {
+  margin-top: 2%;
+  // margin-left: 30%;
+  margin-bottom: 5%;
+  color: #1d262d;
+  font-size: 50px;
+  font-weight: 500;
+  // fa-icon {
+  //   padding: 0 !important;
+  // }
+}
+
+.values-container {
+  margin-top: 8%;
+  // border: 2px solid red;
+}
+$blackColor: #1d262d;
+.top-div-participant-detail-page {
+  //   position: absolute;
+  margin-left: 8%;
+
+  margin-top: 2%;
+}
+.top-div-text-participant-detail-page {
+  font-size: 25px;
+  color: #1d262d;
+  // border: 2px solid red;
+}
+
+.top-div-text-value-participant-detail-page {
+  // color: red;
+  // position: absolute;
+  // left: 35%;
+  font-size: 20px;
+  // font-weight: 900px;
+  color: #1d262d;
+  white-space: nowrap;
+}
+
+.update-profile-btn-custom {
+  // border: 2px solid black;
+  width: 40%;
+  margin-top: 5%;
+  background-color: #f48f44;
+  color: white;
+  // margin-bottom: 7%;
+  margin-left: 30%;
+}
+.update-profile-btn-custom:hover {
+  filter: brightness(90%);
+}
+
+.box-shadow--8dp {
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.graphs-radio-button-container {
+  width: 100vw;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  justify-items: flex-end !important;
+  align-items: flex-end !important;
+  .radio-button-container {
+    // flex-direction: row;
+    margin-left: 1%;
+    // justify-self: flex-end;
+  }
+
+  label {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
+.graph-custom {
+  height: 500px;
+  width: 900px;
+}
+
+.dropdown-custom {
+  color: black;
+  border: 2px solid #1d262d;
+}
+
+.text-event-image-title {
+  margin-bottom: 0;
+  // text-transform: capitalize;
+  // font-size: 18px;
+  // white-space: nowrap;
+}
+.text-event-image {
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+.register-button-events-page {
+  width: 100%;
+  color: white;
+  font-size: 25px;
+  background-color: $blackColor;
+  height: 80px;
+  fa-icon {
+    margin-left: 10%;
+    font-size: 25px;
+  }
+}
+
+.arrow-event-page {
+  // position: absolute;
+  // right: 0;
+  margin-left: 210px;
+}
+
+// .footer-bg {
+//   position: absolute;
+//   background-color: black;
+//   color: white;
+//   width: 100%;
+//   height: 10%;
+//   margin-top: 10%;
+//   // top: 280%;
+//   // top: 1000px;
+
+//   //   bottom: 0;
+// }
+
+// .footer-text-page {
+//   position: absolute;
+//   left: 40%;
+//   top: 20%;
+// }
+
+@media screen and (max-width: 1200px) {
+  // .events {
+  //   margin-left: 190px;
+  // }
+}
